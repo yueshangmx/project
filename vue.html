@@ -4,18 +4,50 @@
   <meta charset="UTF-8">
   <title>Vue学习</title>
   <link rel="stylesheet" href="css/vue.css">
+  <link rel="stylesheet" href="bootstrap/bootstrap.css">
   <script src="vue/vue.js"></script>
 </head>
 <body>
-<div id="app">
-  {{ message }}
+<div class="container">
+  <div id="app1">
+    <span>App1: </span>
+    <div>{{ message }}</div>
+  </div>
+  <div id="app2">
+    <span>App2:条件 v-if </span>
+    <div v-if="cansee">条件控制是否可见 --[app2.cansee='']</div>
+  </div>
+  <div id="app3">
+    <span>App3:循环v-for</span>
+    <ol>
+      <li v-for="todo in todos">
+        {{todo.text}}
+      </li>
+    </ol>
+  </div>
 </div>
 </body>
 <script>
-  var app = new Vue({
-    el: "#app",
+  var app1 = new Vue({
+    el: "#app1",
     data: {
       message: "Hello Vue!"
+    }
+  });
+  let app2 = new Vue({
+    el: "#app2",
+    data: {
+      cansee: true
+    }
+  })
+  let app3 = new Vue({
+    el: "#app3",
+    data: {
+      todos:[
+        { text: '学习 JavaScript' },
+        { text: '学习 Vue' },
+        { text: '整个牛项目' }
+      ]
     }
   })
 </script>
