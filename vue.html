@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue学习</title>
+  <link rel="stylesheet" href="css/vue.css">
+  <script src="vue/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  {{ message }}
+</div>
+</body>
+<script>
+  var app = new Vue({
+    el: "#app",
+    data: {
+      message: "Hello Vue!"
+    }
+  })
+</script>
+</html>
