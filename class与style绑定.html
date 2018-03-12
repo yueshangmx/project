@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue Demo</title>
+  <script src="vue/vue.js"></script>
+  <style>
+    .static {
+      border: 1px solid #a33;
+      width: 600px;
+      margin-bottom: 20px;
+    }
+    .active {
+      background-color: #0ff;
+    }
+    .text-danger {
+      background-color: #f00;
+      color: #00f;
+    }
+  </style>
+</head>
+<body>
+  <div id="app-8" class="static" v-bind:class="{active:isActive,'text-danger':hasError}">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti officiis ratione voluptate voluptatum. Animi, consectetur expedita laudantium reiciendis sint sit. Corporis incidunt nam nesciunt odio perspiciatis quod, rerum ut voluptates?</p>
+  </div>
+
+  <div id="app-9" class="static" v-bind:class="classObject">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, iure mollitia neque perspiciatis quae sed similique unde? Consequuntur culpa doloribus hic ipsum natus, nisi quibusdam? Ab minus quo quod totam?</p>
+  </div>
+
+  <div id="app-10" v-bind:style="{color:activeColor,fontSize:fontSize+'px'}">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus consequatur delectus dignissimos dolore eos ex facilis illo incidunt iure maiores minima minus nam nihil odio, quasi sint temporibus vitae voluptatibus.</p>
+  </div>
+  <div id="app-11" v-bind:style="styleObject">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus consequatur delectus dignissimos dolore eos ex facilis illo incidunt iure maiores minima minus nam nihil odio, quasi sint temporibus vitae voluptatibus.</p>
+  </div>
+</body>
+<script>
+  let app8=new Vue({
+    el: '#app-8',
+    data: {
+      isActive: true,
+      hasError: false,
+    }
+  });
+  let app9=new Vue({
+    el: '#app-9',
+    data: {
+      classObject:{
+        active: true,
+        'text-danger': false,
+      }
+    }
+  });
+  let app10=new Vue({
+    el: '#app-10',
+    data: {
+      activeColor: 'red',
+      fontSize: 30
+    }
+  });
+  let app11=new Vue({
+    el: '#app-11',
+    data: {
+      styleObject: {
+        color: 'red',
+        fontSize: '13px'
+      }
+    }
+  });
+</script>
+</html>
