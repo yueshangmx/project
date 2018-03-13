@@ -13,16 +13,16 @@
 .app1 .toptip {
   width: 100%;
   height: 5%;
+  font-size: 14px;
+  padding-bottom: 10px;
 }
 .app1 .input-wrapper {
-  margin-top: 10px;
-  margin-left: -10px;
-  width: 480px;
   padding: 10px;
   background-color: #fff;
+  border-radius: 5px;
 }
 .app1 .input-wrapper .flex {
-  padding-top: 5px;
+  padding: 5px 0px;
   height: 30px;
   border-bottom: 1px solid #d3d9df;
 }
@@ -37,15 +37,11 @@
   margin-top: -10px;
   background-color: transparent;
 }
-.app1 .input-wrapper .flex .item-input input :focus {
-  outline: none;
-}
 .app1 .input-wrapper .license {
-  background-color: #d3d9df;
   width: 480px;
-  margin-left: -10px;
-  margin-top: -1px;
+  margin-left: -20px;
   margin-bottom: -10px;
+  margin-top: 5px;
   padding-top: 10px;
 }
 .app1 .input-wrapper .license .checked {
@@ -78,4 +74,10 @@
 }
 ::-webkit-input-placeholder {
   text-align: right;
+}
+button:focus {
+  outline: none;
+}
+input:focus {
+  outline: none;
 }
