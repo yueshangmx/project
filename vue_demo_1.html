@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>VUE_Demo_1</title>
+  <link rel="stylesheet" href="css/demo_1.css">
+  <script src="jquery/jquery-3.3.1.js"></script>
+  <script src="vue/vue.js"></script>
+</head>
+<body>
+<div id="app1" class="app1" v-cloak>
+  <div class="toptip">{{ tips }}</div>
+  <div class="input-wrapper">
+    <div class="flex wrapper-item">
+      <label for="account" class="flex2 item-name">账号/手机号</label>
+      <div class="flex4 item-input">
+        <input v-model="account" type="tel" id="account" maxlength="11" placeholder="账号/手机号" autofocus>
+      </div>
+    </div>
+    <div class="flex wrapper-item">
+      <label for="password" class="flex2 item-name">密码</label>
+      <div class="flex4 item-input">
+        <input v-model="password" type="password" id="password" placeholder="输入密码">
+      </div>
+    </div>
+    <div class="flex vertical-center license">
+      <div class="checked"><input class="check-box" type="checkbox"></div>
+      <div class="text">我已阅读并同意</div>
+      <div><a href="javascript:void(0)">《授权协议》</a></div>
+    </div>
+  </div>
+  <div class="bottom-button">
+    <button @click="nextbtn" id="app1-next-btn" type="button" class="next-button">登录</button>
+  </div>
+</div>
+</body>
+<script src="js/demo1.js"></script>
+</html>

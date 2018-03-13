@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+}
+.app1 {
+  padding: 10px;
+  width: 480px;
+  height: 840px;
+  background-color: #d3d9df;
+  position: relative;
+  left: 200px;
+  border-radius: 5px;
+}
+.app1 .toptip {
+  width: 100%;
+  height: 5%;
+}
+.app1 .input-wrapper {
+  margin-top: 10px;
+  margin-left: -10px;
+  width: 480px;
+  padding: 10px;
+  background-color: #fff;
+}
+.app1 .input-wrapper .flex {
+  padding-top: 5px;
+  height: 30px;
+  border-bottom: 1px solid #d3d9df;
+}
+.app1 .input-wrapper .flex .item-input {
+  float: right;
+}
+.app1 .input-wrapper .flex .item-input input {
+  display: inline-block;
+  width: 100%;
+  border: 0px;
+  height: 25px;
+  margin-top: -10px;
+  background-color: transparent;
+}
+.app1 .input-wrapper .flex .item-input input :focus {
+  outline: none;
+}
+.app1 .input-wrapper .license {
+  background-color: #d3d9df;
+  width: 480px;
+  margin-left: -10px;
+  margin-top: -1px;
+  margin-bottom: -10px;
+  padding-top: 10px;
+}
+.app1 .input-wrapper .license .checked {
+  margin-left: 20px;
+  margin-right: 5px;
+  width: 15px;
+  height: 15px;
+}
+.app1 .input-wrapper .license div {
+  float: left;
+  font-family: '微软雅黑', 'sans-serif';
+  font-size: 12px;
+}
+.app1 .input-wrapper .license div a {
+  text-decoration: none;
+}
+.app1 .bottom-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #aaa;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+.app1 .bottom-button .next-button {
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+::-webkit-input-placeholder {
+  text-align: right;
+}
