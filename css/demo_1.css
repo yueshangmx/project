@@ -1,6 +1,8 @@
+/*
 * {
   box-sizing: border-box;
 }
+
 .app1 {
   padding: 10px;
   width: 480px;
@@ -9,68 +11,104 @@
   position: relative;
   left: 200px;
   border-radius: 5px;
+  .toptip {
+    width: 100%;
+    height: 5%;
+    font-size: 14px;
+    padding-bottom: 10px;
+  }
+  .input-wrapper {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    .flex {
+      padding: 5px 0;
+      height: 30px;
+      border-bottom: 1px solid #d3d9df;
+      .item-input {
+        float: right;
+        input {
+          display: inline-block;
+          width: 100%;
+          border: 0;
+          height: 25px;
+          margin-top: -10px;
+          background-color: transparent;
+        }
+      }
+    }
+    .license {
+      width: 480px;
+      margin-left: -20px;
+      margin-bottom: -10px;
+      margin-top: 5px;
+      padding-top: 10px;
+      .checked{
+        margin-left: 20px;
+        margin-right: 5px;
+        width: 15px;
+        height: 15px;
+      }
+      div {
+        float: left;
+        font-family: '微软雅黑','sans-serif';
+        font-size: 12px;
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .bottom-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #aaa;
+    margin-top: 20px;
+    border-radius: 5px;
+    .next-button {
+      width: 100%;
+      background-color: transparent;
+      border: 0;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
 }
-.app1 .toptip {
+*/
+.global-bg {
+  position: fixed;
   width: 100%;
-  height: 5%;
-  font-size: 14px;
-  padding-bottom: 10px;
+  height: 100%;
 }
-.app1 .input-wrapper {
-  padding: 10px;
-  background-color: #fff;
-  border-radius: 5px;
-}
-.app1 .input-wrapper .flex {
-  padding: 5px 0;
-  height: 30px;
-  border-bottom: 1px solid #d3d9df;
-}
-.app1 .input-wrapper .flex .item-input {
-  float: right;
-}
-.app1 .input-wrapper .flex .item-input input {
-  display: inline-block;
+.global-bg video {
+  position: absolute;
+  z-index: -999;
   width: 100%;
-  border: 0;
-  height: 25px;
-  margin-top: -10px;
-  background-color: transparent;
+  min-width: 1920px;
 }
-.app1 .input-wrapper .license {
-  width: 480px;
-  margin-left: -20px;
-  margin-bottom: -10px;
-  margin-top: 5px;
-  padding-top: 10px;
+.global-bg .login-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }
-.app1 .input-wrapper .license .checked {
-  margin-left: 20px;
-  margin-right: 5px;
-  width: 15px;
-  height: 15px;
-}
-.app1 .input-wrapper .license div {
-  float: left;
+.global-bg .login-alert {
+  position: relative;
+  top: 30%;
+  padding-top: 15px;
+  width: 500px;
+  height: 300px;
+  border-radius: 10px;
   font-family: '微软雅黑', 'sans-serif';
-  font-size: 12px;
+  color: #aaa;
 }
-.app1 .input-wrapper .license div a {
-  text-decoration: none;
-}
-.app1 .bottom-button {
+.global-bg .login-alert .form-group .license {
+  color: #aaa;
   width: 100%;
-  padding: 10px;
-  background-color: #aaa;
-  margin-top: 20px;
-  border-radius: 5px;
+  height: 50px;
+  font-size: 14px;
 }
-.app1 .bottom-button .next-button {
-  width: 100%;
-  background-color: transparent;
-  border: 0;
-  font-size: 1.5rem;
-  text-align: center;
+.global-bg .login-alert .form-group input {
+  display: inline-block;
 }
 ::-webkit-input-placeholder {
   text-align: right;
