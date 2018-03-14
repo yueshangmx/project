@@ -8,9 +8,11 @@ let app1 = new Vue({
   methods: {
     loginbtn: function () {
       if (!(this.account && this.password)) {
-        alert("请输入用户名或密码");
+        // alert("请输入用户名或密码");
+        $.jqtimeralert('请输入用户名或密码！');
       }else if(!$(".check-box").is(':checked')){
-        alert("必须先同意授权协议！")
+        // alert("必须先同意授权协议！");
+        $.jqalert('必须先同意本站协议！')
       }
       else {
         alert("account: " + this.account + "\npassword: " + this.password);
