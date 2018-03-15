@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>svg圆形跟随鼠标</title>
+</head>
+
+<body>
+	<svg id="svg" width="800px" height="500px" style="background-color: aqua">
+		<circle id="crl"
+		 cx="100" cy="100" r="20" fill="#0f0" stroke="#000"></circle>
+	</svg>
+</body>
+<script>
+	/*
+	 * SVG在使用过程中
+	 * * SVG提供的所有元素,绑定DOM事件
+	 * * SVG提供的元素的特殊属性,并不能像HTML元素的属性一样去操作
+	 */
+	var svg=document.getElementById("svg");
+	var crl=document.getElementById("crl");
+	svg.onmousemove=function(event){
+		//crl.cx.animVal.value=event.offsetX;
+		//crl.cy.animVal.value=event.offsetY;
+		svg.innerHTML='<circle id="crl" cx="'+event.offsetX+'" cy="'+event.offsetY+'" r="20" fill="#0f0" stroke="#000"></circle>';
+	}
+</script>
+</html>

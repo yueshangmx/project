@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>实心圆跟随鼠标移动</title>
+</head>
+
+<body>
+	<canvas id="canvas" style="background-color: #aaa;" width="800px" height="500px"></canvas>
+</body>
+<script>
+	var canvas=document.getElementById("canvas");
+	var cxt=canvas.getContext("2d");
+	
+	/*cxt.beginPath();
+	cxt.arc(100,100,30,0,Math.PI*2);
+	cxt.fill();
+	*/
+	canvas.onmousemove=function(){
+		var e=window.event||arguments[0];
+		var x=e.offsetX;
+		var y=e.offsetY;
+		cxt.clearRect(0,0,800,500);
+		cxt.beginPath();
+		cxt.arc(x,y,30,0,Math.PI*2);
+		cxt.fill();
+	}
+</script>
+</html>
