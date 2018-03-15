@@ -9,10 +9,11 @@
   <link rel="stylesheet" href="jquery/jquery-ui.css">
   <script src="jquery/jquery-ui.js"></script>
   <script src="js/jqalert.js"></script>
+  <script src="js/addr.js"></script>
   <script src="vue/vue.js"></script>
 </head>
 <body>
-<div id="app1" v-cloak>
+<div id="app" v-cloak>
   <div class="global-bg">
     <video autoplay muted loop>
       <source src="source/blue_bokeh.mp4"/>
@@ -23,14 +24,26 @@
         <div class="form-group">
           <div class="license col-12">{{ tips }}</div>
         </div>
-        <div class="clearfix"></div>
         <div class="form-group">
-          <label for="username" class="col-4">账户/手机号:</label>
-          <input class="col-7 form-control" v-model="account" type="tel" id="username" placeholder="账户/手机号" maxlength="11" autofocus>
+          <label for="username" class="col-2">账户:</label>
+          <input class="col-9 form-control" v-model="account" type="tel" id="username" placeholder="账户/手机号"
+                 maxlength="11" autofocus>
         </div>
         <div class="form-group">
-          <label for="password" class="col-4">登录密码:</label>
-          <input class="col-7 form-control" v-model="password" type="password" id="password" placeholder="请输入密码">
+          <label for="password" class="col-2">密码:</label>
+          <input class="col-9 form-control" v-model="password" type="password" id="password" placeholder="请输入密码">
+        </div>
+        <div class="form-group">
+          <label for="provalue" class="col-2">城市:</label>
+          <select name="province" class="col-3 form-control" id="provalue" v-model="proValue" @change="selectPro">
+            <option :value="item.name" v-for="(item, index) in addrData">{{ item.name }}</option>
+          </select>
+          <select name="city" class="col-3 form-control" id="cityvalue" v-model="cityValue" @change="selectCity">
+            <option :value="item.name" v-for="item in cityData">{{ item.name }}</option>
+          </select>
+          <select name="area" class="col-3 form-control" id="areavalue" v-model="areaValue" @change="selectArea">
+            <option :value="item.name" v-for="item in areaData">{{ item.name }}</option>
+          </select>
         </div>
         <div class="form-group">
           <label class="col-12">
@@ -39,9 +52,10 @@
           </label>
         </div>
         <div class="form-group col-12">
-          <button @click="loginbtn" type="button" class="form-control btn btn-block">登录</button>
+          <button @click="loginbtn" type="button" class="form-control btn btn-block">立即注册</button>
         </div>
       </form>
+      <div class="clearfix"></div>
     </div>
   </div>
 </div>
