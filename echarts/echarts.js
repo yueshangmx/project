@@ -325,7 +325,7 @@ function clone(source) {
  * @param {boolean} [overwrite=false]
  */
 function merge(target, source, overwrite) {
-    // We should escapse that source is string
+    // We should escapse that videos is string
     // and enter for ... in ...
     if (!isObject$1(source) || !isObject$1(target)) {
         return overwrite ? clone(source) : target;
@@ -362,7 +362,7 @@ function merge(target, source, overwrite) {
 }
 
 /**
- * @param {Array} targetAndSources The first item is target, and the rests are source.
+ * @param {Array} targetAndSources The first item is target, and the rests are videos.
  * @param {boolean} [overwrite=false]
  * @return {*} target
  */
@@ -3569,7 +3569,7 @@ function interpolateArray(p0, p1, percent, out, arrDim) {
     }
 }
 
-// arr0 is source array, arr1 is target array.
+// arr0 is videos array, arr1 is target array.
 // Do some preprocess to avoid error happened when interpolating from arr0 to arr1
 function fillArr(arr0, arr1, arrDim) {
     var arr0Len = arr0.length;
@@ -6506,7 +6506,7 @@ Style.prototype = {
         }
 
         if ((firstDraw || style.blend !== prevStyle.blend)) {
-            ctx.globalCompositeOperation = style.blend || 'source-over';
+            ctx.globalCompositeOperation = style.blend || 'videos-over';
         }
         if (this.hasStroke()) {
             var lineWidth = style.lineWidth;
@@ -18745,7 +18745,7 @@ var globalDefault = {
 
     // http://blogs.adobe.com/webplatform/2014/02/24/using-blend-modes-in-html-canvas/
     // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation
-    // Default is source-over
+    // Default is videos-over
     blendMode: null,
 
     animation: 'auto',
@@ -19160,7 +19160,7 @@ function detectSourceFormat(datasetModel) {
 
 /**
  * [Scenarios]:
- * (1) Provide source data directly:
+ * (1) Provide videos data directly:
  *     series: {
  *         encode: {...},
  *         dimensions: [...]
@@ -19179,7 +19179,7 @@ function detectSourceFormat(datasetModel) {
  *     }]
  *
  * Get data from series itself or datset.
- * @return {module:echarts/data/Source} source
+ * @return {module:echarts/data/Source} videos
  */
 function getSource(seriesModel) {
     return inner$3(seriesModel).source;
@@ -19558,7 +19558,7 @@ function guessOrdinal(source, dimIndex) {
     );
 }
 
-// dimIndex may be overflow source data.
+// dimIndex may be overflow videos data.
 function doGuessOrdinal(
     data, sourceFormat, seriesLayoutBy, dimensionsDefine, startIndex, dimIndex
 ) {
@@ -19571,7 +19571,7 @@ function doGuessOrdinal(
     }
 
     // When sourceType is 'objectRows' or 'keyedColumns', dimensionsDefine
-    // always exists in source.
+    // always exists in videos.
     var dimName;
     if (dimensionsDefine) {
         dimName = dimensionsDefine[dimIndex];
@@ -22294,7 +22294,7 @@ var SeriesModel = ComponentModel.extend({
 
     /**
      * @see {module:echarts/data/helper/sourceHelper#getSource}
-     * @return {module:echarts/data/Source} source
+     * @return {module:echarts/data/Source} videos
      */
     getSource: function () {
         return getSource(this);
@@ -25585,7 +25585,7 @@ function updateHoverLayerStatus(zr, ecModel) {
 function updateBlend(seriesModel, chartView) {
     var blendMode = seriesModel.get('blendMode') || null;
     if (__DEV__) {
-        if (!env$1.canvasSupported && blendMode && blendMode !== 'source-over') {
+        if (!env$1.canvasSupported && blendMode && blendMode !== 'videos-over') {
             console.warn('Only canvas support blendMode');
         }
     }
@@ -26727,7 +26727,7 @@ listProto.mapDimension = function (coordDim, idx) {
 
 /**
  * Initialize from data
- * @param {Array.<Object|number|Array>} data source or data or data provider.
+ * @param {Array.<Object|number|Array>} data videos or data or data provider.
  * @param {Array.<string>} [nameLIst] The name of a datum is used on data diff and
  *        defualt label/tooltip.
  *        A name can be specified in encode.itemName,
@@ -26922,7 +26922,7 @@ listProto._initDataFromProvider = function (start, end) {
     }
 
     if (!rawData.persistent && rawData.clean) {
-        // Clean unused data if data source is typed array.
+        // Clean unused data if data videos is typed array.
         rawData.clean();
     }
 
@@ -28257,7 +28257,7 @@ listProto.CHANGABLE_METHODS = ['filterSelf', 'selectRange'];
  * @param {number} [opt.encodeDefaulter] If not specified, auto find the next available data dim.
  * @return {Array.<Object>} [{
  *      name: string mandatory,
- *      displayName: string, the origin name in dimsDef, see source helper.
+ *      displayName: string, the origin name in dimsDef, see videos helper.
  *                 If displayName given, the tooltip will displayed vertically.
  *      coordDim: string mandatory,
  *      coordDimIndex: number mandatory,
@@ -28465,8 +28465,8 @@ function genName(name, map$$1, fromZero) {
  * @param {number} [opt.dimensionsCount]
  * @param {string} [opt.generateCoord]
  * @param {string} [opt.generateCoordCount]
- * @param {Array.<string|Object>} [opt.dimensionsDefine=source.dimensionsDefine] Overwrite source define.
- * @param {Object|HashMap} [opt.encodeDefine=source.encodeDefine] Overwrite source define.
+ * @param {Array.<string|Object>} [opt.dimensionsDefine=videos.dimensionsDefine] Overwrite videos define.
+ * @param {Object|HashMap} [opt.encodeDefine=videos.encodeDefine] Overwrite videos define.
  * @return {Array.<Object>} dimensionsInfo
  */
 var createDimensions = function (source, opt) {
@@ -46622,7 +46622,7 @@ var createGraphFromNodeEdge = function (nodes, edges, seriesModel, directed, bef
         var link = edges[i];
         var source = link.source;
         var target = link.target;
-        // addEdge may fail when source or target not exists
+        // addEdge may fail when videos or target not exists
         if (graph.addEdge(source, target, linkCount)) {
             validEdges.push(link);
             linkNameList.push(retrieve(link.id, source + ' > ' + target));
@@ -52574,7 +52574,7 @@ extendChartView({
             });
 
             curve.setStyle(lineStyleModel.getItemStyle());
-            // Special color, use source node color or target node color
+            // Special color, use videos node color or target node color
             switch (curve.style.fill) {
                 case 'source':
                     curve.style.fill = edge.node1.getVisual('color');
@@ -55787,7 +55787,7 @@ Heatmap.prototype = {
 
         if (!canvas.width || !canvas.height) {
             // Avoid "Uncaught DOMException: Failed to execute 'getImageData' on
-            // 'CanvasRenderingContext2D': The source height is 0."
+            // 'CanvasRenderingContext2D': The videos height is 0."
             return canvas;
         }
 
@@ -57800,7 +57800,7 @@ var axisTrigger = function (payload, ecModel, api) {
         if (linkGroup && !showValueMap[tarKey]) {
             each$15(linkGroup.axesInfo, function (srcAxisInfo, srcKey) {
                 var srcValItem = showValueMap[srcKey];
-                // If srcValItem exist, source axis is triggered, so link to target axis.
+                // If srcValItem exist, videos axis is triggered, so link to target axis.
                 if (srcAxisInfo !== tarAxisInfo && srcValItem) {
                     var val = srcValItem.value;
                     linkGroup.mapper && (val = tarAxisInfo.axis.scale.parse(linkGroup.mapper(
@@ -69007,7 +69007,7 @@ var eachAxisDim$1 = createNameEach(AXIS_DIMS, ['axisIndex', 'axis', 'index', 'id
 /**
  * If tow dataZoomModels has the same axis controlled, we say that they are 'linked'.
  * dataZoomModels and 'links' make up one or more graphics.
- * This function finds the graphic where the source dataZoomModel is in.
+ * This function finds the graphic where the videos dataZoomModel is in.
  *
  * @public
  * @param {Function} forEachNode Node iterator.

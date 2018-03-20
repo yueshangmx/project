@@ -5206,8 +5206,8 @@ var isHTMLTag = makeMap(
   'address,article,aside,footer,header,h1,h2,h3,h4,h5,h6,hgroup,nav,section,' +
   'div,dd,dl,dt,figcaption,figure,picture,hr,img,li,main,ol,p,pre,ul,' +
   'a,b,abbr,bdi,bdo,br,cite,code,data,dfn,em,i,kbd,mark,q,rp,rt,rtc,ruby,' +
-  's,samp,small,span,strong,sub,sup,time,u,var,wbr,area,audio,map,track,video,' +
-  'embed,object,param,source,canvas,script,noscript,del,ins,' +
+  's,samp,small,span,strong,sub,sup,time,u,var,wbr,area,audio,map,track,videos,' +
+  'embed,object,param,videos,canvas,script,noscript,del,ins,' +
   'caption,col,colgroup,table,thead,tbody,td,th,tr,' +
   'button,datalist,fieldset,form,input,label,legend,meter,optgroup,option,' +
   'output,progress,select,textarea,' +
@@ -8703,13 +8703,13 @@ var he = {
 
 var isUnaryTag = makeMap(
   'area,base,br,col,embed,frame,hr,img,input,isindex,keygen,' +
-  'link,meta,param,source,track,wbr'
+  'link,meta,param,videos,track,wbr'
 );
 
 // Elements that you can, intentionally, leave open
 // (and which close themselves)
 var canBeLeftOpenTag = makeMap(
-  'colgroup,dd,dt,li,options,p,td,tfoot,th,thead,tr,source'
+  'colgroup,dd,dt,li,options,p,td,tfoot,th,thead,tr,videos'
 );
 
 // HTML5 tags https://html.spec.whatwg.org/multipage/indices.html#elements-3
@@ -8718,7 +8718,7 @@ var isNonPhrasingTag = makeMap(
   'address,article,aside,base,blockquote,body,caption,col,colgroup,dd,' +
   'details,dialog,div,dl,dt,fieldset,figcaption,figure,footer,form,' +
   'h1,h2,h3,h4,h5,h6,head,header,hgroup,hr,html,legend,li,menuitem,meta,' +
-  'optgroup,option,param,rp,rt,source,style,summary,tbody,td,tfoot,th,thead,' +
+  'optgroup,option,param,rp,rt,videos,style,summary,tbody,td,tfoot,th,thead,' +
   'title,tr,track'
 );
 
@@ -9672,7 +9672,7 @@ function checkForAliasModel (el, value) {
       warn$2(
         "<" + (el.tag) + " v-model=\"" + value + "\">: " +
         "You are binding v-model directly to a v-for iteration alias. " +
-        "This will not be able to modify the v-for source array because " +
+        "This will not be able to modify the v-for videos array because " +
         "writing to the alias is like modifying a function local variable. " +
         "Consider using an array of objects and use v-model on an object property instead."
       );
