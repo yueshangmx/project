@@ -1,7 +1,10 @@
 $(function () {
-  let container = $('.container')[0];
-  let img_left = $('.imglist').css("left");
-  let img = $(".imglist img");
+  // let container = $('.container')[0];
+  let container = document.getElementsByClassName("container")[0];
+  // let img_left = $('.imglist').css("left");
+  let img_left = window.getComputedStyle(document.getElementsByClassName("imglist")[0],null).left;
+  // let img = $(".imglist img");
+  let img = document.getElementsByTagName("img");
   let index = 1;
   let span = "";
   let timer;
@@ -16,7 +19,8 @@ $(function () {
     if (newLeft < -(img[0].width * (img.length - 1))) {
       img_left = 0 + 'px';
     }
-    $('.imglist').css("left", img_left)
+    // $('.imglist').css("left", img_left);
+    document.getElementsByClassName("imglist")[0].style.left = img_left ;
   }
 
   function play() {
@@ -35,6 +39,7 @@ $(function () {
   }
   $(".buttons").append(span);
   let buttons = $('span');
+  buttons[0].className = "on";
 
   function buttonsShow() {
     //将之前的小圆点的样式清除
