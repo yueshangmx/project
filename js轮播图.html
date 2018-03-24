@@ -34,6 +34,7 @@
       float: left;
       width: 2000px;
       height: 400px;
+      opacity: .1;
     }
 
     .buttons {
@@ -93,8 +94,6 @@
       right: 20px;
     }
   </style>
-  <script src="jquery/jquery-3.3.1.js"></script>
-  <script src="js/lunbo.js"></script>
 </head>
 
 <body>
@@ -102,7 +101,7 @@
 <div class="container">
   <div class="imglist">
     <img src="images/1.png" alt="1"/>
-    <img src="images/2.jpg" alt="2"/>
+    <img src="images/2.jpg" class="show" alt="2"/>
     <img src="images/3.png" alt="3"/>
     <img src="images/4.jpg" alt="4"/>
     <img src="images/5.png" alt="5"/>
@@ -116,4 +115,9 @@
   <a href="javascript:void (0);" class="next arrow">&gt;</a>
 </div>
 </body>
+<!--jquery版本-->
+<!--<script src="jquery/jquery-3.3.1.js"></script>
+<script src="js/lunbo_jq.js"></script>-->
+<!--原生JS版本-->
+<script src="js/lunbo_js.js"></script>
 </html>

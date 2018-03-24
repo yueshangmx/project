@@ -1,10 +1,7 @@
 $(function () {
-  // let container = $('.container')[0];
-  let container = document.getElementsByClassName("container")[0];
-  // let img_left = $('.imglist').css("left");
-  let img_left = window.getComputedStyle(document.getElementsByClassName("imglist")[0],null).left;
-  // let img = $(".imglist img");
-  let img = document.getElementsByTagName("img");
+  let container = $('.container')[0];
+  let img_left = $('.imglist').css("left");
+  let img = $(".imglist img");
   let index = 1;
   let span = "";
   let timer;
@@ -19,8 +16,13 @@ $(function () {
     if (newLeft < -(img[0].width * (img.length - 1))) {
       img_left = 0 + 'px';
     }
-    // $('.imglist').css("left", img_left);
-    document.getElementsByClassName("imglist")[0].style.left = img_left ;
+    if (img_left === "-16000px" && buttons[0].className === "on") {
+      img_left = "0px";
+    }
+    if (img_left === "-16000px" && buttons[7].className === "on") {
+      img_left = "-14000px";
+    }
+    $('.imglist').css("left", img_left);
   }
 
   function play() {
