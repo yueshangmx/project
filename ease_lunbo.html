@@ -2,134 +2,190 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <title>最简单的轮播广告</title>
+  <title>无缝轮播图</title>
   <style>
-    body, div, ul, li {
+    * {
       margin: 0;
       padding: 0;
     }
+
     ul {
-      list-style-type: none;
+      list-style: none;
     }
-    body {
-      background: #fff;
-      text-align: center;
-      font: 14px Arial;
-    }
-    #box {
-      position: relative;
+
+    .banner {
       width: 100%;
       height: 400px;
-      background: #fff;
-      border-radius: 5px;
-      border: 1px solid #fff;
-      margin: 0 auto;
-    }
-    #box .list {
+      border: 2px solid #ccc;
+      margin: 100px auto;
       position: relative;
-      width: 100%;
-      height: 400px;
       overflow: hidden;
-      border: 1px solid #ccc;
     }
-    #box .list li {
+
+    .img {
       position: absolute;
-      /*top: ;*/
-      /*left: ;*/
-      width: 2000px;
-      height: 400px;
-      opacity: 1;
-      transition: opacity .5s linear
+      top: 0;
+      left: 0
     }
-    #box .list li.current {
-      opacity: .5;
-    }
-    #box .count {
-      position: absolute;
-      right: 50%;
-      bottom: 20px;
-    }
-    #box .count li {
-      color: #fff;
+
+    .img li {
       float: left;
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-      margin-right: 10px;
-      overflow: hidden;
-      background: #Fff;
-      opacity: .5;
-      border-radius: 50%;
     }
-    #box .count li.current {
+
+    .num {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0;
+    }
+
+    .num li {
+      width: 10px;
+      height: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 100%;
+      display: inline-block;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+    .btn {
+      display: none;
+    }
+
+    .btn span {
+      display: block;
+      width: 50px;
+      height: 100px;
+      background: rgba(0, 0, 0, 0.6);
       color: #fff;
-      opacity: 1;
-      font-weight: bold;
-      background: #fff;
+      font-size: 40px;
+      line-height: 100px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .btn .prev {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      margin-top: -50px;
+    }
+
+    .btn .next {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      margin-top: -50px;
+    }
+
+    .num .active {
+      background-color: #f00;
     }
   </style>
+  <script src="jquery/jquery-3.3.1.js"></script>
 </head>
 <body>
-<div id="box">
-  <ul class="list">
-    <li class="current" style="opacity: ;"><img src="images/1.png" width="" height=""></li>
-    <li style="opacity: ;"><img src="images/2.jpg" width="" height=""></li>
-    <li style="opacity: ;"><img src="images/3.png" width="" height=""></li>
-    <li style="opacity: ;"><img src="images/4.jpg" width="" height=""></li>
-    <li style="opacity: ;"><img src="images/5.png" width="" height=""></li>
+<div class="banner">
+  <ul class="img">
+    <li><a href="#"><img src="images/1.png" alt="第1张图片"></a></li>
+    <li><a href="#"><img src="images/2.png" alt="第2张图片"></a></li>
+    <li><a href="#"><img src="images/3.png" alt="第3张图片"></a></li>
+    <li><a href="#"><img src="images/4.png" alt="第4张图片"></a></li>
+    <li><a href="#"><img src="images/5.png" alt="第5张图片"></a></li>
+    <li><a href="#"><img src="images/6.png" alt="第6张图片"></a></li>
+    <li><a href="#"><img src="images/7.png" alt="第7张图片"></a></li>
+    <li><a href="#"><img src="images/8.png" alt="第8张图片"></a></li>
   </ul>
-  <ul class="count">
-    <li class="current"></li>
-    <li class=""></li>
-    <li class=""></li>
-    <li class=""></li>
-    <li class=""></li>
-  </ul>
+  <ul class="num"></ul>
+
+  <div class="btn">
+    <span class="prev"><</span>
+    <span class="next">></span>
+  </div>
 </div>
 <script>
-  var box=document.getElementById('box');
-  var uls=document.getElementsByTagName('ul');
-  var imgs=uls[].getElementsByTagName('li');
-  var btn=uls[].getElementsByTagName('li');
-  var i=index=; //中间量，统一声明；
-  var play=null;
-  console.log(box,uls,imgs,btn);//获取正确
-  //图片切换, 淡入淡出效果我是用（transition: opacity .s linear）做的,不纠结、简单 在css里面
-  function show(a){    //方法定义的是当传入一个下标时，按钮和图片做出对的反应
-    for(i=;i<btn.length;i++ ){
-      btn[i].className='';  //很容易看懂吧？每个按钮都先设置成看不见，然后把当前按钮设置成可见。
-      btn[a].className='current';
+  $(function () {
+    let i = 0;
+    let timer = null;
+    for (let j = 0; j < $('.img li').length; j++) { //创建圆点
+      $('.num').append('<li></li>')
     }
-    for(i=;i<imgs.length;i++){ //把图片的效果设置和按钮相同
-      imgs[i].style.opacity=;
-      imgs[a].style.opacity=;
-    }
-  }
-  //切换按钮功能，响应对应图片
-  for(i=;i<btn.length;i++){
-    btn[i].index=i; //不知道你有没有发现，循环里的方法去调用循环里的变量体i，会出现调到的不是i的变动值的问题。所以我先在循环外保存住
-    btn[i].onmouseover=function(){
-      show(this.index);
-      clearInterval(play); //这就是最后那句话追加的功能
-    }
-  }
-  //自动轮播方法
-  function autoPlay(){
-    play=setInterval(function(){ //这个paly是为了保存定时器的，变量必须在全局声明 不然其他方法调不到 或者你可以调用auto.play 也许可以但是没时间试了
-      index++;
-      index>=imgs.length&&(index=);//可能有优先级问题，所以用了括号，没时间测试了。
-      show(index);
-    },)
-  }
-  autoPlay();//马上调用，我试过用window.onload调用这个方法，但是调用之后影响到了其他方法，使用autoPlay所以只能这样调用了
-  //div的鼠标移入移出事件
-  box.onmouseover=function(){
-    clearInterval(play);
-  };
-  box.onmouseout=function(){
-    autoPlay();
-  };
-  //按钮下标也要加上相同的鼠标事件，不然图片停止了，定时器没停，会突然闪到很大的数字上。 貌似我可以直接追加到之前定义事件中。
+    $('.num li').first().addClass('active'); //给第一个圆点添加样式
+    let firstimg = $('.img li').first().clone(); //复制第一张图片
+    $('.img').append(firstimg).width($('.img li').length * ($('.img img').width())); //将第一张图片放到最后一张图片后，设置ul的宽度为图片张数*图片宽度
+// 下一个按钮
+    $('.next').click(function () {
+      i++;
+      if (i == $('.img li').length) {
+        i = 1; //这里不是i=0
+        $('.img').css({left: 0}); //保证无缝轮播，设置left值
+      };
+      $('.img').stop().animate({left: -i * $('.img img').width()}, 300);
+      if (i == $('.img li').length - 1) { //设置小圆点指示
+        $('.num li').eq(0).addClass('active').siblings().removeClass('active');
+      } else {
+        $('.num li').eq(i).addClass('active').siblings().removeClass('active');
+      }
+    })
+// 上一个按钮
+    $('.prev').click(function () {
+      i--;
+      if (i == -1) {
+        i = $('.img li').length - 2;
+        $('.img').css({left: -($('.img li').length - 1) * $('.img img').width()});
+      }
+      $('.img').stop().animate({left: -i * $('.img img').width()}, 300);
+      $('.num li').eq(i).addClass('active').siblings().removeClass('active');
+    })
+//设置按钮的显示和隐藏
+    $('.banner').hover(function () {
+      $('.btn').show();
+    }, function () {
+      $('.btn').hide();
+    })
+//鼠标划入圆点
+    $('.num li').mouseover(function () {
+      let _index = $(this).index();
+      $('.img').stop().animate({left: -_index * $('.img img').width()}, 150);
+      $('.num li').eq(_index).addClass('active').siblings().removeClass('active');
+    })
+//定时器自动播放
+    timer = setInterval(function () {
+      i++;
+      if (i == $('.img li').length) {
+        i = 1;
+        $('.img').css({left: 0});
+      }
+      ;
+      $('.img').stop().animate({left: -i * $('.img img').width()}, 300);
+      if (i == $('.img li').length - 1) {
+        $('.num li').eq(0).addClass('active').siblings().removeClass('active');
+      } else {
+        $('.num li').eq(i).addClass('active').siblings().removeClass('active');
+      }
+    }, 3000)
+//鼠标移入，暂停自动播放，移出，开始自动播放
+    $('.banner').hover(function () {
+      clearInterval(timer);
+    }, function () {
+      timer = setInterval(function () {
+        i++;
+        if (i == $('.img li').length) {
+          i = 1;
+          $('.img').css({left: 0});
+        }
+        ;
+        $('.img').stop().animate({left: -i * $('.img img').width()}, 300);
+        if (i == $('.img li').length - 1) {
+          $('.num li').eq(0).addClass('active').siblings().removeClass('active');
+        } else {
+          $('.num li').eq(i).addClass('active').siblings().removeClass('active');
+        }
+      }, 3000)
+    })
+  })
 </script>
 </body>
 </html>
