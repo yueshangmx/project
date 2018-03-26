@@ -24,7 +24,6 @@ window.onload = function () {
     if (img_left === "-16000px" && buttons[7].className === "on") {
       img_left = "-14000px";
     }
-    // $('.imglist').css("left", img_left);
     document.getElementsByClassName("imglist")[0].style.left = img_left;
   }
 
@@ -66,14 +65,6 @@ window.onload = function () {
     buttons[index - 1].className = "on";
   }
 
-  /*$(".prev").click(function () {
-    index -= 1;
-    if (index < 1) {
-      index = img.length;
-    }
-    buttonsShow();
-    animate(img[0].width);
-  });*/
   prev.onclick = function () {
     index -= 1;
     if (index < 1) {
