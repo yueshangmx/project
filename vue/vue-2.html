@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue</title>
+  <link rel="stylesheet" href="../css/vue.css">
+  <script src="vue.js"></script>
+  <script src="../jquery/jquery-3.3.1.js"></script>
+</head>
+<body>
+<div class="app">
+  <h2>全局注册</h2>
+  <div id="app1">
+    <todo-item></todo-item>
+  </div>
+  <hr>
+  <h2>局部注册</h2>
+  <div id="app2">
+    <my-component></my-component>
+  </div>
+  <hr>
+  <h2>data 必须是函数</h2>
+  <div id="app3">
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+  </div>
+  <hr>
+  <h2>Prop 传递数据</h2>
+  <div id="app4">
+    <child message="Hello!"></child>
+  </div>
+  <div id="app5">
+    <input type="text" v-model="parentMsg">
+    <br>
+    <child :mymsg="parentMsg"></child>
+  </div>
+</div>
+</body>
+<script>
+  Vue.component('todo-item', {
+    template: '<p>vue全局注册</p>'
+  });
+  let app1 = new Vue({
+    el: '#app1',
+  });
+
+  let app2 = new Vue({
+    el: "#app2",
+    components: {
+      'my-component': {
+        template: '<p>vue局部注册</p>'
+      }
+    }
+  });
+
+  let data = {counter: 0};
+  Vue.component('simple-counter', {
+    template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+    data: function () {
+      return {counter: 0}
+    }
+  });
+  let app3 = new Vue({
+    el: '#app3',
+  });
+
+  Vue.component('child',{
+    template: '<span> {{ message }} </span>',
+    props: ['message']
+  });
+  let app4 = new Vue({
+    el: '#app4'
+  });
+
+
+  let app5 = new Vue({
+    el: '#app5',
+    data: {
+      parentMsg: 'message from parent'
+    },
+    components:{
+      'child': {
+        template: '<span> {{ mymsg }}</span> ',
+        props: ['mymsg'],
+      }
+    }
+  });
+</script>
+</html>
