@@ -39,11 +39,6 @@ window.onload = function () {
     clearInterval(timer);
   }
 
-  // for (let i = 1; i <= img.length; i++) {
-  //   span += "<span index='" + i + "'></span>"
-  // }
-  // $(".buttons").append(span);
-  // let buttons = $('span');
   for (let i = 1; i <= img.length; i++) {
     let span = document.createElement("span");
     span.setAttribute("index", i);
@@ -51,7 +46,6 @@ window.onload = function () {
   }
   document.getElementsByClassName("buttons")[0].appendChild(frag);
   let buttons = document.getElementsByTagName("span");
-
   buttons[0].className = "on";
 
   function buttonsShow() {
